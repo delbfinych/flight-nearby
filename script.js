@@ -5,10 +5,6 @@ window.onload = function() {
     table.appendChild(tbody);
 
     fetchData();
-
-    let timer = setInterval(() => {
-        fetchData(table);
-    }, 4000);
 };
 
 function fetchData() {
@@ -19,6 +15,7 @@ function fetchData() {
         .then(res => {
             let { full_count, version, ...data } = res; // Избавляемся от лишних данных перед перебором
             updateTable(data);
+            setTimeout(fetchData,4000);
         });
 }
 function updateTable(data) {
